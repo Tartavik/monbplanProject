@@ -1,6 +1,6 @@
-# Markup Test
+# Основне
 
-Початковий каркас адаптивного односторінкового застосунку за
+[Git Pages](https://tartavik.github.io/monbplanProject/)
 [макетом Figma](https://www.figma.com/design/MwGYHQfDaytsvUW7ivCNMY/Markup-test).
 
 ## Технології
@@ -42,8 +42,6 @@ src/
 ├── components/          # Компоненти сторінки
 └── shared/
     ├── assets/          # Зображення та їхній типізований реєстр
-    ├── styles/          # Глобальні SASS-токени й utilities
+    ├── styles/          # Глобальні SASS-токени
     └── ui/              # Спільні UI-компоненти
 ```
-
-У проєкті використовуються прямі імпорти файлів без проміжних `index.ts`.
