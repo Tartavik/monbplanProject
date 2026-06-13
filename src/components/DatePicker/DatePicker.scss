@@ -1,0 +1,133 @@
+@use '../../shared/styles/tokens' as tokens;
+
+.date-picker {
+  display: flex;
+  margin-top: tokens.$space-5;
+  gap: tokens.$space-3;
+  align-items: center;
+
+  &__title {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  &__picker,
+  &__control {
+    width: tokens.$date-control-width;
+  }
+
+  &__picker {
+    margin-right: tokens.$space-2;
+  }
+
+  &__control {
+    position: relative;
+  }
+
+  &__input {
+    width: tokens.$date-control-width;
+    height: tokens.$date-control-height;
+    padding: 0 56px 0 tokens.$space-2;
+    color: tokens.$color-date-text;
+    font-size: tokens.$font-size-xs;
+    background: tokens.$color-white;
+    border: tokens.$border-width solid tokens.$color-border;
+    border-radius: tokens.$radius-md;
+
+    &::placeholder {
+      color: #9a9a9a;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__clear {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: tokens.$date-control-height;
+    display: grid;
+    width: tokens.$date-control-height;
+    height: tokens.$date-control-height;
+    padding: 0;
+    border: tokens.$border-width solid tokens.$color-border;
+    border-right: none;
+    cursor: pointer;
+    place-items: center;
+
+    img {
+      width: tokens.$icon-size;
+      height: tokens.$icon-size;
+    }
+  }
+
+  &__calendar-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: grid;
+    width: tokens.$date-control-height;
+    height: tokens.$date-control-height;
+    padding: 0;
+    background: #f4f4f4;
+    border: tokens.$border-width solid tokens.$color-border;
+    border-radius: 0 tokens.$radius-md tokens.$radius-md 0;
+    cursor: pointer;
+    place-items: center;
+
+    img {
+      width: tokens.$icon-size;
+      height: tokens.$icon-size;
+    }
+  }
+
+  &__popper {
+    position: absolute;
+    z-index: 10;
+  }
+
+  /* stylelint-disable selector-class-pattern -- react-datepicker classes */
+  &__calendar {
+    font-family: Roboto, Arial, sans-serif;
+    font-size: tokens.$font-size-xs;
+    color: tokens.$color-date-text;
+    border-color: tokens.$color-border;
+
+    .react-datepicker__day,
+    .react-datepicker__day-name,
+    .react-datepicker__current-month {
+      color: tokens.$color-date-text;
+    }
+
+    .react-datepicker__header {
+      background: #f6f6f6;
+      border-color: tokens.$color-border;
+    }
+
+    .react-datepicker__day--selected,
+    .react-datepicker__day--keyboard-selected,
+    .react-datepicker__day--in-selecting-range,
+    .react-datepicker__day--in-range {
+      background: tokens.$color-primary;
+    }
+  }
+  /* stylelint-enable selector-class-pattern */
+
+  @media (width < tokens.$breakpoint-tablet) {
+    flex-wrap: wrap;
+
+    &__title {
+      width: 100%;
+    }
+  }
+
+  @media (width < tokens.$breakpoint-mobile) {
+    &__picker,
+    &__control,
+    &__input {
+      width: 140px;
+    }
+  }
+}

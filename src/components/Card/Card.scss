@@ -1,0 +1,102 @@
+@use '../../shared/styles/tokens' as tokens;
+
+.card {
+  $self: &;
+
+  display: grid;
+  grid-template-columns:
+    tokens.$card-image-size minmax(120px, 1fr) minmax(140px, 1fr)
+    minmax(120px, 1fr);
+  min-height: tokens.$card-image-size;
+  overflow: hidden;
+  font-size: tokens.$font-size-xs;
+  line-height: tokens.$line-height-xs;
+  background: tokens.$color-white;
+
+  &__image {
+    width: tokens.$card-image-size;
+    height: tokens.$card-image-size;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__period,
+  &__upload {
+    display: grid;
+    padding: tokens.$space-4;
+    align-content: center;
+    gap: tokens.$space-2;
+  }
+
+  &__heading {
+    font-size: tokens.$font-size-xs;
+    font-weight: 500;
+    line-height: tokens.$line-height-xs;
+  }
+
+  &__metrics {
+    display: flex;
+    gap: tokens.$space-4;
+  }
+
+  &__metric {
+    display: flex;
+    gap: tokens.$space-1;
+    align-items: center;
+  }
+
+  &--grid {
+    grid-template-columns: repeat(2, 1fr);
+    min-height: 0;
+
+    #{$self}__image {
+      grid-column: 1 / -1;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+    }
+
+    #{$self}__period,
+    #{$self}__upload {
+      padding: tokens.$space-2;
+      gap: tokens.$space-1;
+    }
+
+    #{$self}__upload {
+      display: flex;
+      grid-column: 1 / -1;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    #{$self}__metrics {
+      gap: tokens.$space-2;
+    }
+  }
+
+  @media (width < tokens.$breakpoint-mobile) {
+    &--list {
+      grid-template-columns: tokens.$card-image-size max-content;
+      padding: tokens.$space-2 tokens.$space-4;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &--list #{$self}__image {
+      grid-row: 1 / span 3;
+    }
+
+    &--list #{$self}__period,
+    &--list #{$self}__upload {
+      grid-column: 2;
+      grid-template-columns: max-content max-content;
+      padding: tokens.$space-1 tokens.$space-3;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}

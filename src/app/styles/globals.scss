@@ -1,0 +1,100 @@
+@use '../../shared/styles/reset';
+@use '../../shared/styles/tokens' as tokens;
+
+body {
+  min-width: 320px;
+  color: #262626;
+  background: tokens.$color-surface;
+}
+
+.app {
+  position: relative;
+  min-height: 100%;
+  overflow-x: clip;
+  background-color: tokens.$color-surface;
+  background-image: url('../../shared/assets/images/grad_left_bottom.png');
+  background-repeat: no-repeat;
+  background-position: right bottom;
+
+  &::before,
+  &::after {
+    position: absolute;
+    inset: 0 auto auto 0;
+    pointer-events: none;
+    content: '';
+  }
+
+  &::before {
+    z-index: 0;
+    width: 630px;
+    height: 398px;
+    background: url('../../shared/assets/images/grad_left_top.png') no-repeat
+      left top;
+  }
+
+  &::after {
+    z-index: 1;
+    width: 100%;
+    height: tokens.$header-background-height;
+    background: url('../../shared/assets/images/Rectangle 1.png') no-repeat
+      center top / 100% tokens.$header-background-height;
+  }
+}
+
+.header {
+  position: relative;
+  z-index: 3;
+}
+
+.app-content {
+  position: relative;
+  z-index: 2;
+  min-height: calc(100vh - tokens.$header-min-height);
+  padding: 32px tokens.$space-4;
+
+  &__container {
+    max-width: tokens.$content-max-width;
+    margin-inline: auto;
+  }
+}
+
+.load-more {
+  display: block;
+  min-width: 96px;
+  height: 24px;
+  margin: tokens.$space-6 auto 0;
+  padding-inline: tokens.$space-4;
+  color: tokens.$color-load-more;
+  font-size: tokens.$font-size-xs;
+  line-height: tokens.$line-height-xs;
+  text-transform: uppercase;
+  background: transparent;
+  border: tokens.$border-width solid tokens.$color-load-more;
+  border-radius: 12px;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.cards {
+  display: grid;
+  gap: tokens.$space-1;
+  background: tokens.$color-surface;
+
+  &--grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: tokens.$space-2;
+    background: transparent;
+  }
+
+  @media (width < tokens.$breakpoint-tablet) {
+    &--grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (width < tokens.$breakpoint-mobile) {
+    &--grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

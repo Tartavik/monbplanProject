@@ -1,0 +1,129 @@
+@use '../../shared/styles/tokens' as tokens;
+
+.header {
+  min-height: tokens.$header-min-height;
+  padding: tokens.$space-2 tokens.$space-6 tokens.$space-5;
+
+  &__container {
+    display: flex;
+    max-width: tokens.$content-max-width;
+    margin-inline: auto;
+    gap: 80px;
+    align-items: center;
+  }
+
+  &__logo {
+    flex: 0 0 tokens.$logo-size;
+
+    img {
+      width: tokens.$logo-size;
+      height: tokens.$logo-size;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+    padding-top: tokens.$space-3;
+  }
+
+  &__heading {
+    display: flex;
+    gap: tokens.$space-5;
+    align-items: center;
+  }
+
+  &__title {
+    font-family: Montserrat, Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+  }
+
+  &__chip {
+    padding: tokens.$space-1 tokens.$space-3;
+    color: tokens.$color-primary;
+    font-size: tokens.$font-size-sm;
+    line-height: tokens.$line-height-xs;
+    white-space: nowrap;
+    border: tokens.$border-width solid tokens.$color-primary;
+    border-radius: 2px;
+  }
+
+  &__info {
+    display: flex;
+    flex-wrap: wrap;
+    margin: tokens.$space-4 0 0;
+    gap: 28px;
+  }
+
+  &__info-item {
+    display: flex;
+    gap: tokens.$space-1;
+    font-size: tokens.$font-size-sm;
+    line-height: tokens.$line-height-xs;
+
+    dt {
+      order: 2;
+    }
+
+    dd {
+      order: 1;
+      margin-inline: 0;
+      font-weight: 600;
+    }
+  }
+
+  @media (width < tokens.$breakpoint-tablet) {
+    min-height: 0;
+    padding: tokens.$space-5 tokens.$space-4;
+
+    &__container {
+      gap: tokens.$space-6;
+      align-items: flex-start;
+    }
+
+    &__logo {
+      flex-basis: tokens.$logo-size-tablet;
+
+      img {
+        width: tokens.$logo-size-tablet;
+        height: tokens.$logo-size-tablet;
+      }
+    }
+
+    &__content {
+      padding-top: 0;
+    }
+
+    &__heading {
+      flex-wrap: wrap;
+      gap: tokens.$space-2 tokens.$space-3;
+      align-items: flex-start;
+    }
+  }
+
+  @media (width < tokens.$breakpoint-mobile) {
+    &__container {
+      gap: tokens.$space-4;
+    }
+
+    &__logo {
+      flex-basis: tokens.$logo-size-mobile;
+
+      img {
+        width: tokens.$logo-size-mobile;
+        height: tokens.$logo-size-mobile;
+      }
+    }
+
+    &__title {
+      font-size: 20px;
+      line-height: 24px;
+    }
+
+    &__info {
+      gap: tokens.$space-2 tokens.$space-4;
+    }
+  }
+}
