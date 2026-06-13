@@ -1,6 +1,7 @@
 # Основне
 
 [Git Pages](https://tartavik.github.io/monbplanProject/)
+
 [макетом Figma](https://www.figma.com/design/MwGYHQfDaytsvUW7ivCNMY/Markup-test).
 
 ## Технології
